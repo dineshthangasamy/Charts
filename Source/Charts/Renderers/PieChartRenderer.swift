@@ -685,7 +685,7 @@ open class PieChartRenderer: DataRenderer
         let center = chart.centerCircleBox
         let radius = chart.radius
         let drawInnerArc = chart.drawHoleEnabled && !chart.drawSlicesUnderHoleEnabled
-        let userInnerRadius = drawInnerArc ? radius * chart.holeRadiusPercent : 0.0
+        let userInnerRadius = drawInnerArc ? radius * chart.holeRadiusPercentHighlighted : 0.0
         
         for i in 0 ..< indices.count
         {
