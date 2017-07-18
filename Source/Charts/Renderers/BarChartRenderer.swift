@@ -604,6 +604,27 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                                         y: y + iconsOffset.y,
                                         size: icon.size)
                                 }
+
+                                // RF 2017-07-17: support for sum values on top (or below) of stacked bars
+                                if !dataSet.isDrawValuesEnabled && (k == transformed.count-1 || (k == 0 && e.negativeSum > 0)){
+                                    var magicValue = Double.greatestFiniteMagnitude
+                                    if k == 0 && e.negativeSum > 0 {
+                                        magicValue *= -1
+                                    }
+
+                                    drawValue(
+                                        context: context,
+                                        value: formatter.stringForValue(
+                                            magicValue,
+                                            entry: e,
+                                            dataSetIndex: dataSetIndex,
+                                            viewPortHandler: viewPortHandler),
+                                        xPos: x,
+                                        yPos: y,
+                                        font: valueFont,
+                                        align: .center,
+                                        color: dataSet.valueTextColorAt(index))
+                                }
                             }
                         }
                         
