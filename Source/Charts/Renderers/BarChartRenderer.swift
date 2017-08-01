@@ -413,13 +413,13 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                         
                         let x = rect.origin.x + rect.size.width / 2.0
                         
-                        if !viewPortHandler.isInBoundsRight(x)
+                        if !viewPortHandler.isInBoundsRight(x + 50)
                         {
                             break
                         }
                         
                         if !viewPortHandler.isInBoundsY(rect.origin.y)
-                            || !viewPortHandler.isInBoundsLeft(x)
+                            || !viewPortHandler.isInBoundsLeft(x - 50)
                         {
                             continue
                         }
